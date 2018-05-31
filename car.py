@@ -8,30 +8,35 @@ class Car(object):
 
   def drive(self):
     print("Vroom!")
-    self.speed = 35
+    self.mileage = self.mileage + 15
+    return self.mileage
 
 
   def display_car(self):
+     return print("Price: {}, Speed: {}, Fuel: {}, Mileage: {}".format(self.price, self.speed,self.fuel,self.mileage))
+  def taxes(self):
     if self.price > 10000:
-      tax = self.price * 0.15
-      final_price = self.price + tax
+      tax = 0.15
+      compute_tax = self.price * tax
+      final_price = self.price + compute_tax
     else:
-      tax = self.price * 0.12
-      final_price = self.price + tax
-    return print("Price: {}, Speed: {}, Fuel: {}, Mileage: {}".format(final_price,self.speed,self.fuel,self.mileage))
+      tax = 0.12
+      compute_tax = self.price * tax
+      final_price = self.price + compute_tax
+    print("Tax: {}\nAdded Amount: {}\nFinal Price: {}".format(tax, compute_tax, final_price))
+    return final_price
 
   def detect_speed(self):
-    if self.speed >= 55 and self.speed <= 80:
-      print("You are traveling at a safe speed on the highway")
-    elif self.speed < 55 and self.speed >= 35:
-      print("You are on a main city road")
-    elif self.speed < 35 and self.speed > 0:
-      print("You are in a parking lot")
-    elif self.speed == 0:
-      print("Your car is stopped")
-    else:
-      print("You are most likely going to fast")
+    if self.speed > 55:
+      print("You are most likely on a highway")
 
 car = Car(12000, 120, 'Full', 30000)
 car.display_car()
 car.drive()
+car.detect_speed()
+car.taxes()
+car.drive()
+car.drive()
+car.drive()
+car.drive()
+car.display_car()
