@@ -1,42 +1,37 @@
 class Car(object):
-
   def __init__(self, price, speed, fuel, mileage):
     self.price = price
     self.speed = speed
     self.fuel = fuel
     self.mileage = mileage
-
-  def drive(self):
-    print("Vroom!")
-    self.mileage = self.mileage + 15
-    return self.mileage
-
-
-  def display_car(self):
-     return print("Price: {}, Speed: {}, Fuel: {}, Mileage: {}".format(self.price, self.speed,self.fuel,self.mileage))
-  def taxes(self):
     if self.price > 10000:
-      tax = 0.15
-      compute_tax = self.price * tax
-      final_price = self.price + compute_tax
+      self.tax = 0.15
     else:
-      tax = 0.12
-      compute_tax = self.price * tax
-      final_price = self.price + compute_tax
-    print("Tax: {}\nAdded Amount: {}\nFinal Price: {}".format(tax, compute_tax, final_price))
-    return final_price
+      self.tax = 0.12
 
-  def detect_speed(self):
-    if self.speed > 55:
-      print("You are most likely on a highway")
+  def display_all(self):
+    print "Price: " + str(self.price)
+    print "Speed: " + str(self.speed) + "mph"
+    print "Fuel: " + self.fuel
+    print "Mileage: " + str(self.mileage) + "mpg"
+    print "Tax: " + str(self.tax)
 
-car = Car(12000, 120, 'Full', 30000)
-car.display_car()
-car.drive()
-car.detect_speed()
-car.taxes()
-car.drive()
-car.drive()
-car.drive()
-car.drive()
-car.display_car()
+print "\n"
+car_1 = Car(1200, 120, "Full", 10)
+car_1.display_all()
+print "\n"
+car_2 = Car(12000, 100, "Half-Full", 30)
+car_2.display_all()
+print "\n"    
+car_3 = Car(10001, 200, "Half-Full", 60)
+car_3.display_all()
+print "\n"
+car_4 = Car(10000, 80, "Full", 130)
+car_4.display_all()
+print "\n"
+car_5 = Car(1000, 60, "Empty", 100)
+car_5.display_all()
+print "\n"
+car_6 = Car(15000, 50, "Half-Full", 330)
+car_6.display_all()
+
